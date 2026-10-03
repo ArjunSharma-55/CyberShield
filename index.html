@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cybersecurity Toolkit - Educational security utility dashboard">
+<title>CyberShield | Cybersecurity Toolkit</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="background-grid"></div>
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="brand">
+        <div class="brand-icon">🛡</div>
+        <div><h1>CyberShield</h1><span>Security Toolkit</span></div>
+    </div>
+    <nav class="navigation">
+        <button class="nav-item active" data-tool="dashboard"><span>⌂</span>Dashboard</button>
+        <button class="nav-item" data-tool="password"><span>🔐</span>Password Checker</button>
+        <button class="nav-item" data-tool="hash"><span>#</span>Hash Generator</button>
+        <button class="nav-item" data-tool="base64"><span>⇄</span>Base64 Tool</button>
+        <button class="nav-item" data-tool="ip"><span>🌐</span>IP Validator</button>
+        <button class="nav-item" data-tool="url"><span>🔗</span>URL Analyzer</button>
+        <button class="nav-item" data-tool="crypto"><span>🔒</span>Encryption Demo</button>
+        <button class="nav-item" data-tool="history"><span>📜</span>History</button>
+    </nav>
+    <div class="sidebar-footer"><div class="status-dot"></div><span>System Ready</span></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <div class="search-box"><span>⌕</span><input type="text" id="toolSearch" placeholder="Search security tools..." autocomplete="off"></div>
+    <div class="header-actions">
+        <div class="live-status"><span></span>ONLINE</div>
+        <button class="icon-button" id="clearHistory" title="Clear history">🗑</button>
+    </div>
+</header>
+
+<section class="content">
+<section class="tool-section active-section" id="dashboard">
+    <div class="hero">
+        <div>
+            <div class="eyebrow"><span></span>EDUCATIONAL SECURITY SUITE</div>
+            <h2>Cybersecurity <strong>Toolkit</strong></h2>
+            <p>A browser-based collection of security utilities designed for learning, testing and defensive use.</p>
+        </div>
+        <div class="hero-shield">🛡</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><span class="stat-icon">🧰</span><div><small>TOOLS</small><strong>7</strong></div></div>
+        <div class="stat-card"><span class="stat-icon">⚡</span><div><small>STATUS</small><strong>READY</strong></div></div>
+        <div class="stat-card"><span class="stat-icon">💾</span><div><small>HISTORY</small><strong id="historyCount">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon">🔒</span><div><small>MODE</small><strong>LOCAL</strong></div></div>
+    </div>
+
+    <div class="section-heading"><div><span class="eyebrow">AVAILABLE MODULES</span><h3>Security Tools</h3></div></div>
+
+    <div class="tool-grid">
+        <article class="tool-card" data-tool-card="password"><div class="tool-card-icon">🔐</div><div class="tool-card-content"><span class="tool-tag">SECURITY</span><h4>Password Strength</h4><p>Analyze password complexity using multiple security rules.</p></div><button class="open-tool" data-open="password">Open →</button></article>
+        <article class="tool-card" data-tool-card="hash"><div class="tool-card-icon">#️⃣</div><div class="tool-card-content"><span class="tool-tag">HASHING</span><h4>Hash Generator</h4><p>Generate a SHA-256 hash from text directly in your browser.</p></div><button class="open-tool" data-open="hash">Open →</button></article>
+        <article class="tool-card" data-tool-card="base64"><div class="tool-card-icon">⇄</div><div class="tool-card-content"><span class="tool-tag">ENCODING</span><h4>Base64 Utility</h4><p>Encode and decode Base64 strings.</p></div><button class="open-tool" data-open="base64">Open →</button></article>
+        <article class="tool-card" data-tool-card="ip"><div class="tool-card-icon">🌐</div><div class="tool-card-content"><span class="tool-tag">NETWORK</span><h4>IP Validator</h4><p>Validate IPv4 and IPv6 address formats.</p></div><button class="open-tool" data-open="ip">Open →</button></article>
+        <article class="tool-card" data-tool-card="url"><div class="tool-card-icon">🔗</div><div class="tool-card-content"><span class="tool-tag">ANALYSIS</span><h4>URL Analyzer</h4><p>Inspect the structure of a URL without visiting it.</p></div><button class="open-tool" data-open="url">Open →</button></article>
+        <article class="tool-card" data-tool-card="crypto"><div class="tool-card-icon">🔒</div><div class="tool-card-content"><span class="tool-tag">CRYPTO</span><h4>Encryption Demo</h4><p>Learn how browser-side encryption workflows operate.</p></div><button class="open-tool" data-open="crypto">Open →</button></article>
+    </div>
+</section>
+
+<section class="tool-section" id="password">
+<div class="tool-header"><span class="eyebrow">SECURITY MODULE</span><h2>Password Strength Checker</h2><p>Enter a password to analyze its complexity.</p></div>
+<div class="workspace">
+<div class="panel">
+<label>Password</label>
+<div class="input-with-action"><input type="password" id="passwordInput" placeholder="Enter password..." autocomplete="new-password"><button id="togglePassword">Show</button></div>
+<div class="strength-meter"><div id="strengthBar"></div></div>
+<div class="strength-result"><span>Strength</span><strong id="strengthText">Waiting...</strong></div>
+<div class="rules" id="passwordRules">
+<div data-rule="length"><span>○</span>At least 8 characters</div>
+<div data-rule="lower"><span>○</span>Lowercase letter</div>
+<div data-rule="upper"><span>○</span>Uppercase letter</div>
+<div data-rule="number"><span>○</span>Number</div>
+<div data-rule="special"><span>○</span>Special character</div>
+</div>
+</div>
+<div class="info-panel"><span class="panel-label">HOW IT WORKS</span><h3>Password analysis</h3><p>The checker evaluates basic password characteristics locally. Your password is not sent to a server.</p><div class="notice"><span>ℹ</span>Never use this demo to test a real password you currently use.</div></div>
+</div>
+</section>
+
+<section class="tool-section" id="hash">
+<div class="tool-header"><span class="eyebrow">HASHING MODULE</span><h2>SHA-256 Hash Generator</h2><p>Convert text into a SHA-256 cryptographic hash.</p></div>
+<div class="workspace">
+<div class="panel"><label>Input Text</label><textarea id="hashInput" placeholder="Enter text to hash..."></textarea><button class="primary-button" id="generateHash">Generate SHA-256</button></div>
+<div class="panel"><label>Hash Output</label><div class="result-box" id="hashOutput">Your hash will appear here...</div><button class="secondary-button" id="copyHash">📋 Copy Hash</button></div>
+</div>
+</section>
+
+<section class="tool-section" id="base64">
+<div class="tool-header"><span class="eyebrow">ENCODING MODULE</span><h2>Base64 Encoder / Decoder</h2><p>Encode text into Base64 or decode Base64 text.</p></div>
+<div class="workspace">
+<div class="panel"><label>Input</label><textarea id="base64Input" placeholder="Enter text..."></textarea><div class="button-row"><button class="primary-button" id="encodeBase64">Encode</button><button class="secondary-button" id="decodeBase64">Decode</button></div></div>
+<div class="panel"><label>Output</label><div class="result-box" id="base64Output">Result will appear here...</div><button class="secondary-button" id="copyBase64">📋 Copy Result</button></div>
+</div>
+</section>
+
+<section class="tool-section" id="ip">
+<div class="tool-header"><span class="eyebrow">NETWORK MODULE</span><h2>IP Address Validator</h2><p>Check whether an IP address follows IPv4 or IPv6 formatting rules.</p></div>
+<div class="single-panel"><label>IP Address</label><div class="input-action"><input type="text" id="ipInput" placeholder="Example: 192.168.1.1"><button class="primary-button" id="validateIP">Validate</button></div><div class="validation-result" id="ipResult">Enter an IP address to begin.</div></div>
+</section>
+
+<section class="tool-section" id="url">
+<div class="tool-header"><span class="eyebrow">ANALYSIS MODULE</span><h2>URL Analyzer</h2><p>Inspect URL components locally without opening the destination.</p></div>
+<div class="single-panel"><label>URL</label><div class="input-action"><input type="text" id="urlInput" placeholder="https://example.com/path"><button class="primary-button" id="analyzeURL">Analyze</button></div>
+<div class="url-results">
+<div class="url-item"><span>Protocol</span><strong id="urlProtocol">—</strong></div>
+<div class="url-item"><span>Hostname</span><strong id="urlHostname">—</strong></div>
+<div class="url-item"><span>Port</span><strong id="urlPort">—</strong></div>
+<div class="url-item"><span>Path</span><strong id="urlPath">—</strong></div>
+<div class="url-item"><span>Query</span><strong id="urlQuery">—</strong></div>
+<div class="url-item"><span>Hash</span><strong id="urlHash">—</strong></div>
+</div></div>
+</section>
+
+<section class="tool-section" id="crypto">
+<div class="tool-header"><span class="eyebrow">CRYPTO MODULE</span><h2>Encryption Demo</h2><p>Educational browser-side encryption demonstration.</p></div>
+<div class="workspace">
+<div class="panel"><label>Message</label><textarea id="cryptoInput" placeholder="Enter message..."></textarea><label>Secret Key</label><input type="text" id="cryptoKey" placeholder="Enter a secret key"><div class="button-row"><button class="primary-button" id="encryptText">Encrypt</button><button class="secondary-button" id="decryptText">Decrypt</button></div></div>
+<div class="panel"><label>Output</label><div class="result-box large" id="cryptoOutput">Result will appear here...</div><button class="secondary-button" id="copyCrypto">📋 Copy Result</button></div>
+</div>
+<div class="notice"><span>⚠</span>This is an educational demonstration and should not be used as a production encryption system.</div>
+</section>
+
+<section class="tool-section" id="history">
+<div class="tool-header"><span class="eyebrow">LOCAL STORAGE</span><h2>Tool History</h2><p>Recent operations stored locally in your browser.</p></div>
+<div class="history-container" id="historyContainer"></div>
+</section>
+</section>
+
+<footer><span>© 2026 CyberShield Toolkit</span><span>Educational &amp; Defensive Use Only</span></footer>
+</main>
+
+<div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMessage">Done</span></div>
+<script src="script.js"></script>
+</body>
+</html>
