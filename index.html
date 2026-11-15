@@ -1,149 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cybersecurity Toolkit - Educational security utility dashboard">
-<title>CyberShield | Cybersecurity Toolkit</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080b12">
+<meta name="description" content="CyberShield — Shield Sphere. Browser-based cybersecurity learning and defensive utilities.">
+<title>CyberShield V2.0 | Shield Sphere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="background-grid"></div>
-<div class="glow glow-one"></div>
-<div class="glow glow-two"></div>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<aside class="sidebar" id="sidebar">
-    <div class="brand">
-        <div class="brand-icon">🛡</div>
-        <div><h1>CyberShield</h1><span>Security Toolkit</span></div>
-    </div>
-    <nav class="navigation">
-        <button class="nav-item active" data-tool="dashboard"><span>⌂</span>Dashboard</button>
-        <button class="nav-item" data-tool="password"><span>🔐</span>Password Checker</button>
-        <button class="nav-item" data-tool="hash"><span>#</span>Hash Generator</button>
-        <button class="nav-item" data-tool="base64"><span>⇄</span>Base64 Tool</button>
-        <button class="nav-item" data-tool="ip"><span>🌐</span>IP Validator</button>
-        <button class="nav-item" data-tool="url"><span>🔗</span>URL Analyzer</button>
-        <button class="nav-item" data-tool="crypto"><span>🔒</span>Encryption Demo</button>
-        <button class="nav-item" data-tool="history"><span>📜</span>History</button>
-    </nav>
-    <div class="sidebar-footer"><div class="status-dot"></div><span>System Ready</span></div>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-overlay"></div>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+<a class="brand" href="#dashboard"><span class="brand-mark">⬡</span><span class="brand-copy"><strong>CYBER<span>SHIELD</span></strong><small>SHIELD SPHERE / V2.0</small></span></a>
+<div class="nav-label">WORKSPACE</div>
+<nav class="navigation">
+<button class="nav-item active" data-view="dashboard"><span class="nav-icon">⌂</span>Overview<kbd>01</kbd></button>
+<button class="nav-item" data-view="password"><span class="nav-icon">⌑</span>Password lab<kbd>02</kbd></button>
+<button class="nav-item" data-view="hash"><span class="nav-icon">#</span>Hash studio<kbd>03</kbd></button>
+<button class="nav-item" data-view="base64"><span class="nav-icon">⇄</span>Base64 utility<kbd>04</kbd></button>
+<button class="nav-item" data-view="ip"><span class="nav-icon">⌁</span>IP validator<kbd>05</kbd></button>
+<button class="nav-item" data-view="url"><span class="nav-icon">↗</span>URL inspector<kbd>06</kbd></button>
+<button class="nav-item" data-view="crypto"><span class="nav-icon">◈</span>Encryption lab<kbd>07</kbd></button>
+<button class="nav-item" data-view="filehash"><span class="nav-icon">▤</span>File hash<kbd>08</kbd></button>
+<button class="nav-item" data-view="json"><span class="nav-icon">{ }</span>JSON studio<kbd>09</kbd></button>
+<button class="nav-item" data-view="compare"><span class="nav-icon">⇄</span>Text compare<kbd>10</kbd></button>
+<button class="nav-item" data-view="history"><span class="nav-icon">◷</span>Activity log<kbd>11</kbd></button>
+</nav>
+<div class="sidebar-bottom"><div class="privacy-card"><span class="privacy-icon">◉</span><div><strong>LOCAL-FIRST MODE</strong><small>Inputs stay in this browser</small></div></div><div class="sidebar-foot"><i></i> CORE SYSTEM READY <span>V2.0.0</span></div></div>
 </aside>
-
-<main class="main">
-<header class="topbar">
-    <button class="mobile-menu" id="mobileMenu">☰</button>
-    <div class="search-box"><span>⌕</span><input type="text" id="toolSearch" placeholder="Search security tools..." autocomplete="off"></div>
-    <div class="header-actions">
-        <div class="live-status"><span></span>ONLINE</div>
-        <button class="icon-button" id="clearHistory" title="Clear history">🗑</button>
-    </div>
-</header>
-
-<section class="content">
-<section class="tool-section active-section" id="dashboard">
-    <div class="hero">
-        <div>
-            <div class="eyebrow"><span></span>EDUCATIONAL SECURITY SUITE</div>
-            <h2>Cybersecurity <strong>Toolkit</strong></h2>
-            <p>A browser-based collection of security utilities designed for learning, testing and defensive use.</p>
-        </div>
-        <div class="hero-shield">🛡</div>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card"><span class="stat-icon">🧰</span><div><small>TOOLS</small><strong>7</strong></div></div>
-        <div class="stat-card"><span class="stat-icon">⚡</span><div><small>STATUS</small><strong>READY</strong></div></div>
-        <div class="stat-card"><span class="stat-icon">💾</span><div><small>HISTORY</small><strong id="historyCount">0</strong></div></div>
-        <div class="stat-card"><span class="stat-icon">🔒</span><div><small>MODE</small><strong>LOCAL</strong></div></div>
-    </div>
-
-    <div class="section-heading"><div><span class="eyebrow">AVAILABLE MODULES</span><h3>Security Tools</h3></div></div>
-
-    <div class="tool-grid">
-        <article class="tool-card" data-tool-card="password"><div class="tool-card-icon">🔐</div><div class="tool-card-content"><span class="tool-tag">SECURITY</span><h4>Password Strength</h4><p>Analyze password complexity using multiple security rules.</p></div><button class="open-tool" data-open="password">Open →</button></article>
-        <article class="tool-card" data-tool-card="hash"><div class="tool-card-icon">#️⃣</div><div class="tool-card-content"><span class="tool-tag">HASHING</span><h4>Hash Generator</h4><p>Generate a SHA-256 hash from text directly in your browser.</p></div><button class="open-tool" data-open="hash">Open →</button></article>
-        <article class="tool-card" data-tool-card="base64"><div class="tool-card-icon">⇄</div><div class="tool-card-content"><span class="tool-tag">ENCODING</span><h4>Base64 Utility</h4><p>Encode and decode Base64 strings.</p></div><button class="open-tool" data-open="base64">Open →</button></article>
-        <article class="tool-card" data-tool-card="ip"><div class="tool-card-icon">🌐</div><div class="tool-card-content"><span class="tool-tag">NETWORK</span><h4>IP Validator</h4><p>Validate IPv4 and IPv6 address formats.</p></div><button class="open-tool" data-open="ip">Open →</button></article>
-        <article class="tool-card" data-tool-card="url"><div class="tool-card-icon">🔗</div><div class="tool-card-content"><span class="tool-tag">ANALYSIS</span><h4>URL Analyzer</h4><p>Inspect the structure of a URL without visiting it.</p></div><button class="open-tool" data-open="url">Open →</button></article>
-        <article class="tool-card" data-tool-card="crypto"><div class="tool-card-icon">🔒</div><div class="tool-card-content"><span class="tool-tag">CRYPTO</span><h4>Encryption Demo</h4><p>Learn how browser-side encryption workflows operate.</p></div><button class="open-tool" data-open="crypto">Open →</button></article>
-    </div>
-</section>
-
-<section class="tool-section" id="password">
-<div class="tool-header"><span class="eyebrow">SECURITY MODULE</span><h2>Password Strength Checker</h2><p>Enter a password to analyze its complexity.</p></div>
-<div class="workspace">
-<div class="panel">
-<label>Password</label>
-<div class="input-with-action"><input type="password" id="passwordInput" placeholder="Enter password..." autocomplete="new-password"><button id="togglePassword">Show</button></div>
-<div class="strength-meter"><div id="strengthBar"></div></div>
-<div class="strength-result"><span>Strength</span><strong id="strengthText">Waiting...</strong></div>
-<div class="rules" id="passwordRules">
-<div data-rule="length"><span>○</span>At least 8 characters</div>
-<div data-rule="lower"><span>○</span>Lowercase letter</div>
-<div data-rule="upper"><span>○</span>Uppercase letter</div>
-<div data-rule="number"><span>○</span>Number</div>
-<div data-rule="special"><span>○</span>Special character</div>
+<div class="sidebar-scrim" id="sidebarScrim"></div>
+<main class="main-area">
+<header class="topbar"><div class="topbar-left"><button class="icon-btn mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button><div class="breadcrumb"><span>CYBERSHIELD</span><i>/</i><strong id="currentSection">OVERVIEW</strong></div></div>
+<div class="topbar-right"><label class="search-control"><span>⌕</span><input id="toolSearch" type="search" placeholder="Find a tool..." aria-label="Search tools"><kbd>Ctrl K</kbd></label><span class="environment"><i></i> BROWSER SESSION</span></div></header>
+<div class="content-area">
+<section class="view active-view" id="dashboard">
+<div class="hero-panel"><div class="hero-copy"><div class="eyebrow"><b></b> DEFENSIVE SECURITY WORKSPACE <span class="live-pill">V2.0</span></div><h1>Think secure.<br><em>Build smarter.</em></h1><p>A practical collection of browser-based security utilities and learning tools. Explore, validate and understand — without pretending a local check is a full security audit.</p><div class="hero-actions"><button class="btn btn-primary" data-go="password">Explore tools <span>↗</span></button><span class="hero-note"><i></i> No account required</span></div></div>
+<div class="orbital"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="orbit-core"><strong>⬡</strong><small>SHIELD<br>SPHERE</small></div><i class="node node-one"></i><i class="node node-two"></i><i class="node node-three"></i></div><div class="hero-index">CS / 2026 — DIGITAL DEFENSE</div></div>
+<div class="metrics-grid"><article class="metric-card"><span>AVAILABLE TOOLS</span><strong>09</strong><small>Browser-based utilities</small></article><article class="metric-card"><span>RECENT OPERATIONS</span><strong id="historyMetric">00</strong><small>Saved locally on this device</small></article><article class="metric-card"><span>EXECUTION MODE</span><strong class="metric-word">LOCAL</strong><small>No application server required</small></article><article class="metric-card"><span>PRIVACY STATUS</span><strong class="metric-word green">ON-DEVICE</strong><small>Tool inputs are processed locally</small></article></div>
+<div class="section-heading"><div><span class="eyebrow">TOOL DIRECTORY / 01</span><h2>Security workspace</h2></div><span class="section-count">09 MODULES</span></div>
+<div class="tool-grid">
+<article class="tool-card" data-card="password"><div class="card-top"><span class="tool-icon">⌑</span><span>CREDENTIALS</span></div><h3>Password lab</h3><p>Review password characteristics and generate random passwords locally.</p><button class="card-link" data-go="password">Open module ↗</button></article>
+<article class="tool-card" data-card="hash"><div class="card-top"><span class="tool-icon">#</span><span>CRYPTOGRAPHY</span></div><h3>Hash studio</h3><p>Create SHA-256, SHA-384 and SHA-512 digests with Web Crypto.</p><button class="card-link" data-go="hash">Open module ↗</button></article>
+<article class="tool-card" data-card="base64"><div class="card-top"><span class="tool-icon">⇄</span><span>ENCODING</span></div><h3>Base64 utility</h3><p>Encode and decode UTF-8 text with Unicode-safe functions.</p><button class="card-link" data-go="base64">Open module ↗</button></article>
+<article class="tool-card" data-card="ip"><div class="card-top"><span class="tool-icon">⌁</span><span>NETWORK BASICS</span></div><h3>IP validator</h3><p>Check IPv4 and IPv6 address syntax locally.</p><button class="card-link" data-go="ip">Open module ↗</button></article>
+<article class="tool-card" data-card="url"><div class="card-top"><span class="tool-icon">↗</span><span>URL REVIEW</span></div><h3>URL inspector</h3><p>Break down URL components and surface basic review indicators.</p><button class="card-link" data-go="url">Open module ↗</button></article>
+<article class="tool-card" data-card="crypto"><div class="card-top"><span class="tool-icon">◈</span><span>ENCRYPTION</span></div><h3>Encryption lab</h3><p>Demonstrate password-derived AES-GCM encryption and decryption.</p><button class="card-link" data-go="crypto">Open module ↗</button></article>
+<article class="tool-card" data-card="filehash"><div class="card-top"><span class="tool-icon">▤</span><span>FILE INTEGRITY</span></div><h3>File hash</h3><p>Calculate SHA-256, SHA-384 or SHA-512 digests for a local file.</p><button class="card-link" data-go="filehash">Open module ↗</button></article>
+<article class="tool-card" data-card="json"><div class="card-top"><span class="tool-icon">{ }</span><span>DATA FORMATTING</span></div><h3>JSON studio</h3><p>Validate, format and minify JSON locally in your browser.</p><button class="card-link" data-go="json">Open module ↗</button></article>
+<article class="tool-card" data-card="compare"><div class="card-top"><span class="tool-icon">⇄</span><span>TEXT ANALYSIS</span></div><h3>Text compare</h3><p>Compare two text inputs and identify changed line positions.</p><button class="card-link" data-go="compare">Open module ↗</button></article>
 </div>
+<div class="disclaimer-strip"><b>ⓘ</b><p><strong>Scope note:</strong> CyberShield is an educational utility suite. A successful local check does not prove that a password, IP address, URL or website is safe.</p></div>
+</section>
+
+<section class="view" id="password"><div class="view-heading"><div><span class="eyebrow">MODULE 02 / CREDENTIALS</span><h1>Password <em>lab</em></h1><p>Check basic password characteristics or create a random password on this device.</p></div><span class="heading-chip">LOCAL PROCESSING</span></div>
+<div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>01 / ANALYZE</small><h2>Strength review</h2></div><b>⌑</b></div><label for="passwordInput">Test password</label><div class="input-action"><input id="passwordInput" type="password" autocomplete="off" placeholder="Enter a sample password"><button class="inline-action" id="togglePassword">SHOW</button></div><div class="strength-track"><span id="strengthBar"></span></div><div class="strength-line"><span>Rule coverage</span><strong id="strengthText">Waiting for input</strong></div><div class="rule-list"><div data-rule="length"><i>○</i> 12 or more characters</div><div data-rule="lower"><i>○</i> Lowercase letter</div><div data-rule="upper"><i>○</i> Uppercase letter</div><div data-rule="number"><i>○</i> Number</div><div data-rule="special"><i>○</i> Symbol</div></div><p class="field-hint">Educational rule check only — not a breach lookup or security guarantee. Do not enter a password you currently use.</p></article>
+<article class="panel"><div class="panel-heading"><div><small>02 / GENERATE</small><h2>Random password</h2></div><b>✳</b></div><label for="generatedPassword">Generated result</label><div class="output-field"><output id="generatedPassword">Your generated password appears here</output><button class="inline-action" id="copyGenerated">COPY</button></div><div class="range-row"><label for="passwordLength">Length <strong id="passwordLengthValue">20</strong></label><input id="passwordLength" type="range" min="12" max="48" value="20"></div><div class="check-options"><label><input type="checkbox" id="genUpper" checked> Uppercase</label><label><input type="checkbox" id="genLower" checked> Lowercase</label><label><input type="checkbox" id="genNumbers" checked> Numbers</label><label><input type="checkbox" id="genSymbols" checked> Symbols</label></div><button class="btn btn-primary full-width" id="generatePassword">Generate securely ↻</button><p class="field-hint">Uses the browser cryptographic random generator. Generated values are not saved to history.</p></article>
+<div class="panel" style="margin-top:14px"><div class="panel-heading"><div><small>03 / PASSPHRASE</small><h2>Memorable passphrase</h2></div><b>✳</b></div><label for="phraseWords">Word count</label><select id="phraseWords"><option value="6" selected>6 words</option><option value="7">7 words</option><option value="8">8 words</option></select><label for="phraseSeparator" class="spaced-label">Word separator</label><select id="phraseSeparator"><option value="-">Hyphen (-)</option><option value="_">Underscore (_)</option><option value=".">Dot (.)</option></select><div class="output-field" style="margin-top:13px"><output id="generatedPassphrase">Your passphrase appears here</output><button class="inline-action" id="copyPassphrase">COPY</button></div><button class="btn btn-primary full-width" id="generatePassphrase">Generate passphrase ↻</button><p class="field-hint">Uses a local cryptographic random generator and a built-in word list. Six words from this list provide about 42 bits of selection entropy. For important accounts, prefer a reputable password manager's generator.</p></div></div></section>
+
+<section class="view" id="hash"><div class="view-heading"><div><span class="eyebrow">MODULE 03 / CRYPTOGRAPHY</span><h1>Hash <em>studio</em></h1><p>Generate a one-way digest of text using the browser SubtleCrypto API.</p></div><span class="heading-chip">WEB CRYPTO API</span></div><div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>INPUT</small><h2>Source text</h2></div><b>#</b></div><label for="hashInput">Text to hash</label><textarea id="hashInput" placeholder="Enter text to hash..."></textarea><label for="hashAlgorithm" class="spaced-label">Algorithm</label><select id="hashAlgorithm"><option>SHA-256</option><option>SHA-384</option><option>SHA-512</option></select><button class="btn btn-primary full-width" id="generateHash">Generate digest ↗</button></article><article class="panel"><div class="panel-heading"><div><small>OUTPUT</small><h2>Digest result</h2></div><b>◫</b></div><div class="result-box" id="hashOutput">Your digest will appear here.</div><div class="result-meta"><span id="hashLength">— bits</span><span>HEX ENCODING</span></div><button class="btn btn-secondary full-width" id="copyHash">Copy digest</button><p class="field-hint">Hashing is one-way. It is not encryption and cannot be reversed.</p></article></div></section>
+
+<section class="view" id="base64"><div class="view-heading"><div><span class="eyebrow">MODULE 04 / ENCODING</span><h1>Base64 <em>utility</em></h1><p>Convert UTF-8 text to and from Base64. Encoding is not encryption.</p></div><span class="heading-chip">UNICODE READY</span></div><div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>SOURCE</small><h2>Input text</h2></div><b>⇄</b></div><label for="base64Input">Text or Base64 string</label><textarea id="base64Input" placeholder="Enter text to encode, or Base64 to decode..."></textarea><div class="button-row"><button class="btn btn-primary" id="encodeBase64">Encode →</button><button class="btn btn-secondary" id="decodeBase64">← Decode</button></div></article><article class="panel"><div class="panel-heading"><div><small>RESULT</small><h2>Converted output</h2></div><b>◫</b></div><div class="result-box tall" id="base64Output">Your result will appear here.</div><button class="btn btn-secondary full-width" id="copyBase64">Copy result</button></article></div></section>
+
+<section class="view" id="ip"><div class="view-heading"><div><span class="eyebrow">MODULE 05 / NETWORK BASICS</span><h1>IP <em>validator</em></h1><p>Validate address syntax locally. No network scan or connection is performed.</p></div><span class="heading-chip">OFFLINE CHECK</span></div><article class="panel narrow-panel"><div class="panel-heading"><div><small>ADDRESS VALIDATION</small><h2>Check an IP address</h2></div><b>⌁</b></div><label for="ipInput">IPv4 or IPv6 address</label><div class="input-action"><input id="ipInput" type="text" spellcheck="false" placeholder="Example: 192.168.1.1"><button class="btn btn-primary" id="validateIP">Validate</button></div><div class="status-result" id="ipResult" aria-live="polite">Enter an address to begin.</div><p class="field-hint">Valid syntax does not indicate whether a host is reachable, trusted or secure.</p></article></section>
+
+<section class="view" id="url"><div class="view-heading"><div><span class="eyebrow">MODULE 06 / URL REVIEW</span><h1>URL <em>inspector</em></h1><p>Inspect URL structure and basic warning indicators without opening the destination.</p></div><span class="heading-chip">NO NAVIGATION</span></div><article class="panel"><div class="panel-heading"><div><small>STRUCTURE ANALYSIS</small><h2>Inspect a URL</h2></div><b>↗</b></div><label for="urlInput">Website URL</label><div class="input-action"><input id="urlInput" type="text" spellcheck="false" placeholder="https://example.com/path"><button class="btn btn-primary" id="analyzeURL">Inspect URL</button></div><div class="url-grid"><div class="url-field"><span>Protocol</span><strong id="urlProtocol">—</strong></div><div class="url-field"><span>Hostname</span><strong id="urlHostname">—</strong></div><div class="url-field"><span>Port</span><strong id="urlPort">—</strong></div><div class="url-field"><span>Path</span><strong id="urlPath">—</strong></div><div class="url-field"><span>Query parameters</span><strong id="urlQuery">—</strong></div><div class="url-field"><span>Fragment</span><strong id="urlHash">—</strong></div></div><div class="review-box" id="urlReview" aria-live="polite">Review indicators will appear here.</div><p class="field-hint">Structural inspection only. It does not query reputation databases, follow redirects or certify a URL as safe.</p></article></section>
+
+<section class="view" id="crypto"><div class="view-heading"><div><span class="eyebrow">MODULE 07 / ENCRYPTION</span><h1>Encryption <em>lab</em></h1><p>Demonstrate password-derived AES-GCM encryption in your browser.</p></div><span class="heading-chip">AES-256-GCM</span></div><div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>PLAINTEXT / KEY</small><h2>Message input</h2></div><b>◈</b></div><label for="cryptoInput">Message or encrypted package</label><textarea id="cryptoInput" placeholder="Enter a message to encrypt, or paste an encrypted package to decrypt..."></textarea><label for="cryptoKey" class="spaced-label">Passphrase</label><input id="cryptoKey" type="password" autocomplete="off" placeholder="Enter a strong passphrase"><div class="button-row"><button class="btn btn-primary" id="encryptText">Encrypt message</button><button class="btn btn-secondary" id="decryptText">Decrypt package</button></div></article><article class="panel"><div class="panel-heading"><div><small>CIPHERTEXT / RESULT</small><h2>Output package</h2></div><b>▧</b></div><div class="result-box tall" id="cryptoOutput">Encrypted package or plaintext will appear here.</div><button class="btn btn-secondary full-width" id="copyCrypto">Copy output</button><p class="field-hint">Educational implementation, not a reviewed production key-management system. Keep your passphrase safe; it is not stored.</p></article></div></section>
+
+
+<section class="view" id="filehash"><div class="view-heading"><div><span class="eyebrow">MODULE 08 / FILE INTEGRITY</span><h1>File <em>hash</em></h1><p>Calculate a cryptographic digest of a file selected from your device. The file is read locally and never uploaded.</p></div><span class="heading-chip">LOCAL FILE ONLY</span></div><article class="panel narrow-panel"><div class="panel-heading"><div><small>FILE CHECKSUM</small><h2>Choose a file</h2></div><b>▤</b></div><label for="fileHashInput">Select a file (maximum 64 MB)</label><input id="fileHashInput" type="file"><label for="fileHashAlgorithm" class="spaced-label">Digest algorithm</label><select id="fileHashAlgorithm"><option>SHA-256</option><option>SHA-384</option><option>SHA-512</option></select><button class="btn btn-primary full-width" id="calculateFileHash">Calculate file digest</button><div class="result-box" id="fileHashOutput">File digest will appear here.</div><div class="result-meta"><span id="fileHashMeta">No file selected</span><span>HEX ENCODING</span></div><button class="btn btn-secondary full-width" id="copyFileHash">Copy digest</button><p class="field-hint">The browser SubtleCrypto digest API reads the selected file into memory. Files larger than 64 MB are rejected to avoid excessive memory use. A matching digest can help compare file identity; it does not prove a file is safe.</p></article></section>
+
+<section class="view" id="json"><div class="view-heading"><div><span class="eyebrow">MODULE 09 / DATA FORMATTING</span><h1>JSON <em>studio</em></h1><p>Parse JSON safely, format it for readability or minify it for compact storage.</p></div><span class="heading-chip">NO CODE EXECUTION</span></div><div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>INPUT</small><h2>JSON source</h2></div><b>{ }</b></div><label for="jsonInput">Paste JSON</label><textarea id="jsonInput" placeholder='{"project":"CyberShield","version":2}'></textarea><div class="button-row"><button class="btn btn-primary" id="formatJSON">Validate & format</button><button class="btn btn-secondary" id="minifyJSON">Minify</button></div><div class="status-result" id="jsonStatus" aria-live="polite">Waiting for JSON input.</div></article><article class="panel"><div class="panel-heading"><div><small>OUTPUT</small><h2>Formatted JSON</h2></div><b>◫</b></div><div class="result-box tall" id="jsonOutput">Formatted JSON will appear here.</div><button class="btn btn-secondary full-width" id="copyJSON">Copy output</button><p class="field-hint">Uses JSON.parse and JSON.stringify. It does not execute JavaScript or evaluate expressions.</p></article></div></section>
+
+<section class="view" id="compare"><div class="view-heading"><div><span class="eyebrow">MODULE 10 / TEXT ANALYSIS</span><h1>Text <em>compare</em></h1><p>Compare two text blocks line by line and inspect where their contents differ.</p></div><span class="heading-chip">LOCAL COMPARISON</span></div><div class="split-layout"><article class="panel"><div class="panel-heading"><div><small>LEFT INPUT</small><h2>Original text</h2></div><b>A</b></div><label for="compareLeft">Text A</label><textarea id="compareLeft" placeholder="Paste the original text..."></textarea></article><article class="panel"><div class="panel-heading"><div><small>RIGHT INPUT</small><h2>Updated text</h2></div><b>B</b></div><label for="compareRight">Text B</label><textarea id="compareRight" placeholder="Paste the updated text..."></textarea></article></div><div class="button-row"><button class="btn btn-primary" id="runCompare">Compare text</button><button class="btn btn-secondary" id="clearCompare">Clear inputs</button></div><article class="panel compare-result-panel"><div class="panel-heading"><div><small>COMPARISON RESULT</small><h2>Line-level summary</h2></div><b>≠</b></div><div class="compare-stats" id="compareStats">Run a comparison to see the result.</div><div class="compare-details" id="compareDetails"></div><p class="field-hint">This is a line-by-line comparison, not a semantic or character-level diff. Blank lines are included in line numbering.</p></article></section>
+
+<section class="view" id="history"><div class="view-heading"><div><span class="eyebrow">MODULE 08 / LOCAL STORAGE</span><h1>Activity <em>log</em></h1><p>Review recent tool operations stored in this browser only.</p></div><span class="heading-chip">MAX 50 ENTRIES</span></div><article class="panel"><div class="panel-heading"><div><small>LOCAL ACTIVITY</small><h2>Recent operations</h2></div><div class="button-row compact-actions"><button class="btn btn-secondary" id="exportHistory">Export JSON</button><button class="btn btn-danger" id="clearHistory">Clear log</button></div></div><div id="historyContainer" class="history-list"></div></article></section>
 </div>
-<div class="info-panel"><span class="panel-label">HOW IT WORKS</span><h3>Password analysis</h3><p>The checker evaluates basic password characteristics locally. Your password is not sent to a server.</p><div class="notice"><span>ℹ</span>Never use this demo to test a real password you currently use.</div></div>
-</div>
-</section>
-
-<section class="tool-section" id="hash">
-<div class="tool-header"><span class="eyebrow">HASHING MODULE</span><h2>SHA-256 Hash Generator</h2><p>Convert text into a SHA-256 cryptographic hash.</p></div>
-<div class="workspace">
-<div class="panel"><label>Input Text</label><textarea id="hashInput" placeholder="Enter text to hash..."></textarea><button class="primary-button" id="generateHash">Generate SHA-256</button></div>
-<div class="panel"><label>Hash Output</label><div class="result-box" id="hashOutput">Your hash will appear here...</div><button class="secondary-button" id="copyHash">📋 Copy Hash</button></div>
-</div>
-</section>
-
-<section class="tool-section" id="base64">
-<div class="tool-header"><span class="eyebrow">ENCODING MODULE</span><h2>Base64 Encoder / Decoder</h2><p>Encode text into Base64 or decode Base64 text.</p></div>
-<div class="workspace">
-<div class="panel"><label>Input</label><textarea id="base64Input" placeholder="Enter text..."></textarea><div class="button-row"><button class="primary-button" id="encodeBase64">Encode</button><button class="secondary-button" id="decodeBase64">Decode</button></div></div>
-<div class="panel"><label>Output</label><div class="result-box" id="base64Output">Result will appear here...</div><button class="secondary-button" id="copyBase64">📋 Copy Result</button></div>
-</div>
-</section>
-
-<section class="tool-section" id="ip">
-<div class="tool-header"><span class="eyebrow">NETWORK MODULE</span><h2>IP Address Validator</h2><p>Check whether an IP address follows IPv4 or IPv6 formatting rules.</p></div>
-<div class="single-panel"><label>IP Address</label><div class="input-action"><input type="text" id="ipInput" placeholder="Example: 192.168.1.1"><button class="primary-button" id="validateIP">Validate</button></div><div class="validation-result" id="ipResult">Enter an IP address to begin.</div></div>
-</section>
-
-<section class="tool-section" id="url">
-<div class="tool-header"><span class="eyebrow">ANALYSIS MODULE</span><h2>URL Analyzer</h2><p>Inspect URL components locally without opening the destination.</p></div>
-<div class="single-panel"><label>URL</label><div class="input-action"><input type="text" id="urlInput" placeholder="https://example.com/path"><button class="primary-button" id="analyzeURL">Analyze</button></div>
-<div class="url-results">
-<div class="url-item"><span>Protocol</span><strong id="urlProtocol">—</strong></div>
-<div class="url-item"><span>Hostname</span><strong id="urlHostname">—</strong></div>
-<div class="url-item"><span>Port</span><strong id="urlPort">—</strong></div>
-<div class="url-item"><span>Path</span><strong id="urlPath">—</strong></div>
-<div class="url-item"><span>Query</span><strong id="urlQuery">—</strong></div>
-<div class="url-item"><span>Hash</span><strong id="urlHash">—</strong></div>
-</div></div>
-</section>
-
-<section class="tool-section" id="crypto">
-<div class="tool-header"><span class="eyebrow">CRYPTO MODULE</span><h2>Encryption Demo</h2><p>Educational browser-side encryption demonstration.</p></div>
-<div class="workspace">
-<div class="panel"><label>Message</label><textarea id="cryptoInput" placeholder="Enter message..."></textarea><label>Secret Key</label><input type="text" id="cryptoKey" placeholder="Enter a secret key"><div class="button-row"><button class="primary-button" id="encryptText">Encrypt</button><button class="secondary-button" id="decryptText">Decrypt</button></div></div>
-<div class="panel"><label>Output</label><div class="result-box large" id="cryptoOutput">Result will appear here...</div><button class="secondary-button" id="copyCrypto">📋 Copy Result</button></div>
-</div>
-<div class="notice"><span>⚠</span>This is an educational demonstration and should not be used as a production encryption system.</div>
-</section>
-
-<section class="tool-section" id="history">
-<div class="tool-header"><span class="eyebrow">LOCAL STORAGE</span><h2>Tool History</h2><p>Recent operations stored locally in your browser.</p></div>
-<div class="history-container" id="historyContainer"></div>
-</section>
-</section>
-
-<footer><span>© 2026 CyberShield Toolkit</span><span>Educational &amp; Defensive Use Only</span></footer>
-</main>
-
-<div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMessage">Done</span></div>
+<footer class="app-footer"><span>CYBERSHIELD — SHIELD SPHERE</span><span>EDUCATIONAL & DEFENSIVE USE ONLY · V2.0.0</span></footer>
+</main></div>
+<div class="toast" id="toast" role="status" aria-live="polite"><b id="toastIcon">✓</b><span id="toastMessage">Complete</span></div>
 <script src="script.js"></script>
-</body>
-</html>
+</body></html>
